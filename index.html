@@ -703,12 +703,6 @@
             color: #2196F3;
         }
 
-        .popup-form-link {
-            margin-top: 24px;
-            width: 100%;
-            text-align: center;
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-image { display: none; }
@@ -754,8 +748,7 @@
             <h1>SMM-агентство, которое даёт результат</h1>
             <p>Мы не обещаем чудес — мы даём результат. Полный цикл продвижения бренда в социальных сетях: от стратегии до масштабирования.</p>
             <div class="hero-buttons">
-                <button class="btn-primary" onclick="openContactPopup()">Оставить заявку</button>
-                <a href="#cases" class="btn-outline">Посмотреть кейсы</a>
+                <a href="#pricing" class="btn-primary">Тарифы</a>
             </div>
         </div>
         <div class="hero-image">
@@ -783,7 +776,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-icon">🤝</div>
+                <div class="service-icon"></div>
                 <div>
                     <h3>Работа с блогерами</h3>
                     <p>Подбираем амбассадоров, чья аудитория совпадает с вашей ЦА. Честные интеграции, измеримый результат.</p>
@@ -817,12 +810,12 @@
                 <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
             </div>
             <div class="principle-card">
-                <div class="principle-icon">🔍</div>
+                <div class="principle-icon"></div>
                 <h3>Глубокое погружение</h3>
                 <p>Прежде чем запустить рекламу, мы изучаем ваш продукт, клиентов и конкурентов. Только так можно построить стратегию, которая действительно работает.</p>
             </div>
             <div class="principle-card">
-                <div class="principle-icon">👥</div>
+                <div class="principle-icon"></div>
                 <h3>Команда, а не фрилансеры</h3>
                 <p>Стратег, копирайтер, дизайнер, видеограф, таргетолог, аналитик — каждый занимается своим делом. Вы получаете слаженную работу профессионалов.</p>
             </div>
@@ -909,7 +902,7 @@
                     <li>4 поста в месяц</li>
                     <li>Базовая реклама</li>
                 </ul>
-                <button class="btn-pricing default" onclick="openContactPopup()">Выбрать</button>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
             </div>
             <div class="pricing-card featured">
                 <h3>Продвижение</h3>
@@ -921,7 +914,7 @@
                     <li>Таргетированная реклама</li>
                     <li>Комьюнити-менеджмент</li>
                 </ul>
-                <button class="btn-pricing primary" onclick="openContactPopup()">Выбрать</button>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing primary">Выбрать</a>
             </div>
             <div class="pricing-card">
                 <h3>VIP</h3>
@@ -933,7 +926,7 @@
                     <li>Работа с блогерами</li>
                     <li>Персональный менеджер</li>
                 </ul>
-                <button class="btn-pricing default" onclick="openContactPopup()">Выбрать</button>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
             </div>
         </div>
     </section>
@@ -986,34 +979,28 @@
             </div>
             
             <div class="contact-item">
-                <div class="contact-icon">✉️</div>
+                <div class="contact-icon">️</div>
                 <div>
                     <div class="contact-label">Email</div>
                     <a href="mailto:hello@forpost.smm" class="contact-value">hello@forpost.smm</a>
                 </div>
             </div>
-
-            <a href="https://timurs-ops.github.io/forpost/" class="btn-primary popup-form-link">
-                Заполнить форму заявки
-            </a>
         </div>
     </div>
 
     <script>
         function openContactPopup() {
             document.getElementById('contactPopup').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+            document.body.style.overflow = 'hidden';
         }
 
         function closeContactPopup(event) {
-            // Закрываем, если клик был по фону или вызван без события (кнопка закрытия)
             if (!event || event.target === document.getElementById('contactPopup')) {
                 document.getElementById('contactPopup').classList.remove('active');
-                document.body.style.overflow = ''; // Возвращаем прокрутку
+                document.body.style.overflow = '';
             }
         }
 
-        // Закрытие по клавише Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeContactPopup();
