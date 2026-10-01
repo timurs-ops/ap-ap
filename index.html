@@ -16,6 +16,7 @@
             color: #1a1a2e;
             background: #f5f6fa;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* ===== HEADER / NAV ===== */
@@ -133,6 +134,8 @@
             border: none;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-primary:hover {
@@ -151,6 +154,8 @@
             border: 2px solid rgba(255,255,255,0.5);
             cursor: pointer;
             transition: background 0.2s, border-color 0.2s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-outline:hover {
@@ -268,11 +273,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             max-width: 1100px;
-        }
-
-        .principles-grid .principle-card:nth-child(4),
-        .principles-grid .principle-card:nth-child(5) {
-            grid-column: span 1;
         }
 
         .principle-card {
@@ -661,7 +661,7 @@
             <a href="#services">Услуги</a>
             <a href="#testimonials">Отзывы</a>
             <a href="#about">О нас</a>
-            <a href="#contact" class="btn-nav">Связаться</a>
+            <a href="https://timurs-ops.github.io/forpost/" class="btn-nav">Связаться</a>
         </nav>
     </header>
 
@@ -671,7 +671,7 @@
             <h1>SMM-агентство, которое даёт результат</h1>
             <p>Мы не обещаем чудес — мы даём результат. Полный цикл продвижения бренда в социальных сетях: от стратегии до масштабирования.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Оставить заявку</a>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-primary">Оставить заявку</a>
                 <a href="#cases" class="btn-outline">Посмотреть кейсы</a>
             </div>
         </div>
@@ -700,7 +700,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <div class="service-icon"></div>
+                <div class="service-icon">🤝</div>
                 <div>
                     <h3>Работа с блогерами</h3>
                     <p>Подбираем амбассадоров, чья аудитория совпадает с вашей ЦА. Честные интеграции, измеримый результат.</p>
@@ -729,27 +729,27 @@
         <h2 class="section-title">Принципы работы</h2>
         <div class="principles-grid">
             <div class="principle-card">
-                <div class="principle-icon"></div>
+                <div class="principle-icon">🔒</div>
                 <h3>Надёжность как принцип</h3>
                 <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
             </div>
             <div class="principle-card">
-                <div class="principle-icon"></div>
+                <div class="principle-icon">🔍</div>
                 <h3>Глубокое погружение</h3>
                 <p>Прежде чем запустить рекламу, мы изучаем ваш продукт, клиентов и конкурентов. Только так можно построить стратегию, которая действительно работает.</p>
             </div>
             <div class="principle-card">
-                <div class="principle-icon"></div>
+                <div class="principle-icon">👥</div>
                 <h3>Команда, а не фрилансеры</h3>
                 <p>Стратег, копирайтер, дизайнер, видеограф, таргетолог, аналитик — каждый занимается своим делом. Вы получаете слаженную работу профессионалов.</p>
             </div>
             <div class="principle-card">
-                <div class="principle-icon"></div>
+                <div class="principle-icon">📊</div>
                 <h3>Прозрачность на 100%</h3>
                 <p>Доступ ко всем кабинетам, еженедельные статусы, понятные отчёты. Никаких скрытых статей и «магии» в цифрах.</p>
             </div>
             <div class="principle-card">
-                <div class="principle-icon"></div>
+                <div class="principle-icon">🚀</div>
                 <h3>Движение вперёд</h3>
                 <p>Мы не останавливаемся на достигнутом. Постоянно тестируем гипотезы, внедряем новые форматы и находим точки роста для вашего бренда.</p>
             </div>
@@ -826,7 +826,7 @@
                     <li>4 поста в месяц</li>
                     <li>Базовая реклама</li>
                 </ul>
-                <a href="#contact" class="btn-pricing default">Выбрать</a>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
             </div>
             <div class="pricing-card featured">
                 <h3>Продвижение</h3>
@@ -838,7 +838,7 @@
                     <li>Таргетированная реклама</li>
                     <li>Комьюнити-менеджмент</li>
                 </ul>
-                <a href="#contact" class="btn-pricing primary">Выбрать</a>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing primary">Выбрать</a>
             </div>
             <div class="pricing-card">
                 <h3>VIP</h3>
@@ -850,7 +850,7 @@
                     <li>Работа с блогерами</li>
                     <li>Персональный менеджер</li>
                 </ul>
-                <a href="#contact" class="btn-pricing default">Выбрать</a>
+                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
             </div>
         </div>
     </section>
@@ -868,15 +868,15 @@
             <div class="footer-links">
                 <div class="footer-col">
                     <h4>Услуги</h4>
-                    <a href="#">SMM-стратегия</a>
-                    <a href="#">Контент-продакшн</a>
-                    <a href="#">Таргетированная реклама</a>
+                    <a href="#services">SMM-стратегия</a>
+                    <a href="#services">Контент-продакшн</a>
+                    <a href="#services">Таргетированная реклама</a>
                 </div>
                 <div class="footer-col">
                     <h4>Компания</h4>
-                    <a href="#">О нас</a>
-                    <a href="#">Кейсы</a>
-                    <a href="#">Контакты</a>
+                    <a href="#about">О нас</a>
+                    <a href="#testimonials">Кейсы</a>
+                    <a href="https://timurs-ops.github.io/forpost/">Контакты</a>
                 </div>
             </div>
         </div>
