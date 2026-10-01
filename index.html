@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форпост — SMM-агентство</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a2e;
+            background: #f5f6fa;
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .btn-nav {
+            background: #fff;
+            color: #1a1a2e;
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #6a0dad 0%, #9b30a0 25%, #c45a8a 45%, #d4845a 65%, #e8a830 85%, #f0c020 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 48px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 560px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #1a1a2e;
+            padding: 16px 32px;
+            border-radius: 32px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 32px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 48px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 420px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #c9a0dc, #f0d0a0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            opacity: 0.6;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 80px 48px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2196F3;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 48px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: #fff;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1100px;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid #eef0f4;
+            border-radius: 16px;
+            padding: 32px 36px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            transition: box-shadow 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            border-radius: 14px;
+            background: #f0f2f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* ===== PRINCIPLES ===== */
+        .principles {
+            background: #f5f6fa;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+        }
+
+        .principles-grid .principle-card:nth-child(4),
+        .principles-grid .principle-card:nth-child(5) {
+            grid-column: span 1;
+        }
+
+        .principle-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #eef0f4;
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+
+        .principle-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .principle-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .principle-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .principle-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* ===== STEPS ===== */
+        .steps {
+            background: #f0f2f8;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+        }
+
+        .step-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #eef0f4;
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .step-number {
+            font-size: 40px;
+            font-weight: 800;
+            color: #2196F3;
+            margin-bottom: 16px;
+        }
+
+        .step-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: #fff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fc;
+            border-radius: 16px;
+            padding: 36px;
+            border: 1px solid #eef0f4;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 15px;
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: normal;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #1a1a2e;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .author-role {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            background: #f5f6fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            border: 2px solid #eef0f4;
+            transition: box-shadow 0.3s, transform 0.2s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .pricing-card.featured {
+            border-color: #2196F3;
+            box-shadow: 0 4px 20px rgba(33,150,243,0.15);
+        }
+
+        .pricing-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #2196F3;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .btn-pricing {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-pricing:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-pricing.default {
+            background: #f0f2f8;
+            color: #1a1a2e;
+        }
+
+        .btn-pricing.primary {
+            background: #2196F3;
+            color: #fff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 60px 48px 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 64px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-image {
+                display: none;
+            }
+
+            .principles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            nav a:not(.btn-nav) {
+                display: none;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .principles-grid,
+            .steps-grid,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .footer-links {
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-circle"></div>
+            Форпост
+        </a>
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#testimonials">Отзывы</a>
+            <a href="#about">О нас</a>
+            <a href="#contact" class="btn-nav">Связаться</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>SMM-агентство, которое даёт результат</h1>
+            <p>Мы не обещаем чудес — мы даём результат. Полный цикл продвижения бренда в социальных сетях: от стратегии до масштабирования.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Оставить заявку</a>
+                <a href="#cases" class="btn-outline">Посмотреть кейсы</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-placeholder">🎨</div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-label">Наши услуги</div>
+        <h2 class="section-title">Что мы делаем</h2>
+        <div class="services-list">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <div>
+                    <h3>Контент-продакшн</h3>
+                    <p>Тексты, дизайн, фото, видео, Reels и Shorts. Создаём контент, который работает на ваши бизнес-задачи: привлекает, удерживает и продаёт.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <div>
+                    <h3>Таргетированная реклама</h3>
+                    <p>Настраиваем, тестируем, масштабируем. Снижаем стоимость заявки и выводим рекламу на стабильную окупаемость.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"></div>
+                <div>
+                    <h3>Работа с блогерами</h3>
+                    <p>Подбираем амбассадоров, чья аудитория совпадает с вашей ЦА. Честные интеграции, измеримый результат.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <div>
+                    <h3>Комьюнити-менеджмент</h3>
+                    <p>Защищаем репутацию бренда, работаем с комментариями, отзывами и возражениями. Ваше лицо в соцсетях всегда под надёжной охраной.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <div>
+                    <h3>Аналитика и отчётность</h3>
+                    <p>Прозрачные отчёты с ключевыми метриками: охваты, ER, CPL, ROI, LTV. Вы всегда видите, как работает ваш «двигатель».</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="principles" id="about">
+        <div class="section-label">Почему Форпост</div>
+        <h2 class="section-title">Принципы работы</h2>
+        <div class="principles-grid">
+            <div class="principle-card">
+                <div class="principle-icon"></div>
+                <h3>Надёжность как принцип</h3>
+                <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
+            </div>
+            <div class="principle-card">
+                <div class="principle-icon"></div>
+                <h3>Глубокое погружение</h3>
+                <p>Прежде чем запустить рекламу, мы изучаем ваш продукт, клиентов и конкурентов. Только так можно построить стратегию, которая действительно работает.</p>
+            </div>
+            <div class="principle-card">
+                <div class="principle-icon"></div>
+                <h3>Команда, а не фрилансеры</h3>
+                <p>Стратег, копирайтер, дизайнер, видеограф, таргетолог, аналитик — каждый занимается своим делом. Вы получаете слаженную работу профессионалов.</p>
+            </div>
+            <div class="principle-card">
+                <div class="principle-icon"></div>
+                <h3>Прозрачность на 100%</h3>
+                <p>Доступ ко всем кабинетам, еженедельные статусы, понятные отчёты. Никаких скрытых статей и «магии» в цифрах.</p>
+            </div>
+            <div class="principle-card">
+                <div class="principle-icon"></div>
+                <h3>Движение вперёд</h3>
+                <p>Мы не останавливаемся на достигнутом. Постоянно тестируем гипотезы, внедряем новые форматы и находим точки роста для вашего бренда.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="steps">
+        <div class="section-label">Как мы работаем</div>
+        <h2 class="section-title">4 шага к росту</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <h3>Диагностика</h3>
+                <p>Изучаем ваш бизнес, аудиторию, конкурентов и текущие показатели.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <h3>Стратегия</h3>
+                <p>Строим план развития: позиционирование, контент-линейка, медиаплан, KPI.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <h3>Запуск</h3>
+                <p>Создаём контент, настраиваем рекламу, подключаем блогеров и активности.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">04</div>
+                <h3>Масштабирование</h3>
+                <p>Анализируем результаты, усиливаем то, что работает, и выходим на новые объёмы.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-label">Отзывы клиентов</div>
+        <h2 class="section-title">Что говорят о нас</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <blockquote>«С Форпостом мы наконец-то увидели реальный рост в социальных сетях. Команда очень профессиональная, всегда на связи и понимает наши бизнес-задачи на 100%. Рекомендуем всем, кто хочет не просто красивые посты, а продажи и окупаемость.»</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar">А</div>
+                    <div>
+                        <div class="author-name">Анна Смирнова</div>
+                        <div class="author-role">Маркетинг-директор, BeautyLine</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <blockquote>«Отличная команда! За 3 месяца работы мы увеличили лиды в 2,5 раза, а стоимость заявки снизили на 30%. Отчётность прозрачная, понятная и регулярная. Работать с Форпостом — одно удовольствие.»</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar">И</div>
+                    <div>
+                        <div class="author-name">Иван Петров</div>
+                        <div class="author-role">Владелец, AutoPro</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="section-label">Тарифы</div>
+        <h2 class="section-title">Выберите подходящий план</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Старт</h3>
+                <div class="pricing-price">50 000 ₽</div>
+                <div class="pricing-period">/месяц</div>
+                <ul class="pricing-features">
+                    <li>SMM-стратегия</li>
+                    <li>4 поста в месяц</li>
+                    <li>Базовая реклама</li>
+                </ul>
+                <a href="#contact" class="btn-pricing default">Выбрать</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Продвижение</h3>
+                <div class="pricing-price">120 000 ₽</div>
+                <div class="pricing-period">/месяц</div>
+                <ul class="pricing-features">
+                    <li>Полная стратегия</li>
+                    <li>12 постов в месяц</li>
+                    <li>Таргетированная реклама</li>
+                    <li>Комьюнити-менеджмент</li>
+                </ul>
+                <a href="#contact" class="btn-pricing primary">Выбрать</a>
+            </div>
+            <div class="pricing-card">
+                <h3>VIP</h3>
+                <div class="pricing-price">250 000 ₽</div>
+                <div class="pricing-period">/месяц</div>
+                <ul class="pricing-features">
+                    <li>Полный цикл продвижения</li>
+                    <li>Безлимитный контент</li>
+                    <li>Работа с блогерами</li>
+                    <li>Персональный менеджер</li>
+                </ul>
+                <a href="#contact" class="btn-pricing default">Выбрать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="footer-logo-circle"></div>
+                    Форпост
+                </div>
+                <p>SMM-агентство, которое помогает брендам расти в социальных сетях. Мы занимаемся стратегией, контентом, рекламой и репутацией.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Услуги</h4>
+                    <a href="#">SMM-стратегия</a>
+                    <a href="#">Контент-продакшн</a>
+                    <a href="#">Таргетированная реклама</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Компания</h4>
+                    <a href="#">О нас</a>
+                    <a href="#">Кейсы</a>
+                    <a href="#">Контакты</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Форпост. Все права защищены.</span>
+            <span>Политика конфиденциальности</span>
+        </div>
+    </footer>
+
+</body>
+</html>
