@@ -414,28 +414,8 @@
             border-radius: 20px;
             padding: 36px;
             border: 2px solid #eef0f4;
-            transition: box-shadow 0.3s, transform 0.2s;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.4s ease;
             cursor: pointer;
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: var(--mouse-y, 50%);
-            left: var(--mouse-x, 50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(33,150,243,0.15) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .pricing-card:hover::before {
-            opacity: 1;
         }
 
         .pricing-card:hover {
@@ -443,44 +423,34 @@
             transform: translateY(-2px);
         }
 
-        .pricing-card.featured {
+        /* Синяя рамка на выбранной карточке */
+        .pricing-card.selected {
             border-color: #2196F3;
-            box-shadow: 0 4px 20px rgba(33,150,243,0.15);
-        }
-
-        .pricing-card.featured::before {
-            background: radial-gradient(circle, rgba(33,150,243,0.25) 0%, transparent 70%);
+            box-shadow: 0 4px 20px rgba(33,150,243,0.2);
+            transform: translateY(-4px);
         }
 
         .pricing-card h3 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
         }
 
         .pricing-price {
             font-size: 40px;
             font-weight: 800;
             margin-bottom: 4px;
-            position: relative;
-            z-index: 1;
         }
 
         .pricing-period {
             font-size: 14px;
             color: #6b7280;
             margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
         }
 
         .pricing-features {
             list-style: none;
             margin-bottom: 28px;
-            position: relative;
-            z-index: 1;
         }
 
         .pricing-features li {
@@ -510,8 +480,6 @@
             cursor: pointer;
             border: none;
             transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-            z-index: 1;
         }
 
         .btn-pricing:hover {
@@ -953,7 +921,7 @@
             <h2 class="section-title">Что мы делаем</h2>
             <div class="services-list">
                 <div class="service-card">
-                    <div class="service-icon"></div>
+                    <div class="service-icon">🎨</div>
                     <div>
                         <h3>Контент-продакшн</h3>
                         <p>Тексты, дизайн, фото, видео, Reels и Shorts. Создаём контент, который работает на ваши бизнес-задачи: привлекает, удерживает и продаёт.</p>
@@ -967,7 +935,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🤝</div>
+                    <div class="service-icon"></div>
                     <div>
                         <h3>Работа с блогерами</h3>
                         <p>Подбираем амбассадоров, чья аудитория совпадает с вашей ЦА. Честные интеграции, измеримый результат.</p>
@@ -1003,7 +971,7 @@
                     <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
                 </div>
                 <div class="principle-card">
-                    <div class="principle-icon">🔍</div>
+                    <div class="principle-icon"></div>
                     <h3>Глубокое погружение</h3>
                     <p>Прежде чем запустить рекламу, мы изучаем ваш продукт, клиентов и конкурентов. Только так можно построить стратегию, которая действительно работает.</p>
                 </div>
@@ -1092,7 +1060,7 @@
             <div class="section-label">Тарифы</div>
             <h2 class="section-title">Выберите подходящий план</h2>
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <div class="pricing-card" onclick="selectPricing(this)">
                     <h3>Старт</h3>
                     <div class="pricing-price">50 000 ₽</div>
                     <div class="pricing-period">/месяц</div>
@@ -1101,9 +1069,9 @@
                         <li>4 поста в месяц</li>
                         <li>Базовая реклама</li>
                     </ul>
-                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
+                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default" onclick="event.stopPropagation()">Выбрать</a>
                 </div>
-                <div class="pricing-card featured">
+                <div class="pricing-card selected" onclick="selectPricing(this)">
                     <h3>Продвижение</h3>
                     <div class="pricing-price">120 000 ₽</div>
                     <div class="pricing-period">/месяц</div>
@@ -1113,9 +1081,9 @@
                         <li>Таргетированная реклама</li>
                         <li>Комьюнити-менеджмент</li>
                     </ul>
-                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing primary">Выбрать</a>
+                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing primary" onclick="event.stopPropagation()">Выбрать</a>
                 </div>
-                <div class="pricing-card">
+                <div class="pricing-card" onclick="selectPricing(this)">
                     <h3>VIP</h3>
                     <div class="pricing-price">250 000 ₽</div>
                     <div class="pricing-period">/месяц</div>
@@ -1125,7 +1093,7 @@
                         <li>Работа с блогерами</li>
                         <li>Персональный менеджер</li>
                     </ul>
-                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
+                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default" onclick="event.stopPropagation()">Выбрать</a>
                 </div>
             </div>
         </div>
@@ -1189,19 +1157,17 @@
     </div>
 
     <script>
-        // Эффект свечения, следующий за курсором на карточках тарифов
-        const pricingCards = document.querySelectorAll('.pricing-card');
-
-        pricingCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+        // Переключение синей рамки между карточками тарифов
+        function selectPricing(clickedCard) {
+            // Убираем класс 'selected' со всех карточек
+            const allCards = document.querySelectorAll('.pricing-card');
+            allCards.forEach(card => {
+                card.classList.remove('selected');
             });
-        });
+            
+            // Добавляем класс 'selected' на кликнутую карточку
+            clickedCard.classList.add('selected');
+        }
 
         function openContactPopup() {
             document.getElementById('contactPopup').classList.add('active');
