@@ -17,6 +17,14 @@
             background: #f5f6fa;
             line-height: 1.6;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         /* ===== HEADER / NAV ===== */
@@ -26,7 +34,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 16px 48px;
+            padding: 16px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -93,7 +101,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 48px 80px;
+            padding: 120px 24px 80px;
             position: relative;
             overflow: hidden;
         }
@@ -101,6 +109,7 @@
         .hero-content {
             max-width: 560px;
             z-index: 2;
+            width: 100%;
         }
 
         .hero h1 {
@@ -145,29 +154,9 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: 32px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border: 2px solid rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: #fff;
-        }
-
         .hero-image {
             position: absolute;
-            right: 48px;
+            right: 24px;
             top: 50%;
             transform: translateY(-50%);
             width: 420px;
@@ -193,7 +182,7 @@
 
         /* ===== SECTIONS COMMON ===== */
         section {
-            padding: 80px 48px;
+            padding: 80px 24px;
         }
 
         .section-label {
@@ -221,7 +210,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            max-width: 1100px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .service-card {
@@ -274,7 +264,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            max-width: 1100px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .principle-card {
@@ -316,7 +307,8 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            max-width: 1100px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .step-card {
@@ -360,7 +352,8 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
-            max-width: 1100px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .testimonial-card {
@@ -416,7 +409,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            max-width: 1100px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .pricing-card {
@@ -508,13 +502,13 @@
         footer {
             background: #1a1a2e;
             color: #fff;
-            padding: 60px 48px 30px;
+            padding: 60px 24px 30px;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             gap: 48px;
             flex-wrap: wrap;
@@ -574,7 +568,7 @@
         }
 
         .footer-bottom {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto 0;
             padding-top: 24px;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -704,25 +698,205 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-image { display: none; }
-            .principles-grid { grid-template-columns: repeat(2, 1fr); }
-            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+        
+        /* Large desktops */
+        @media (min-width: 1440px) {
+            .hero h1 {
+                font-size: 64px;
+            }
+            
+            .section-title {
+                font-size: 42px;
+            }
         }
 
+        /* Desktops */
+        @media (max-width: 1200px) {
+            .hero-image {
+                width: 360px;
+                height: 360px;
+            }
+        }
+
+        /* Laptops */
+        @media (max-width: 1024px) {
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .principles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablets */
         @media (max-width: 768px) {
-            header { padding: 12px 20px; }
-            nav { gap: 16px; }
-            nav a:not(.btn-nav) { display: none; }
-            section { padding: 60px 20px; }
-            .hero { padding: 100px 20px 60px; }
-            .hero h1 { font-size: 36px; }
-            .section-title { font-size: 28px; }
-            .principles-grid, .steps-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
-            .footer-content { flex-direction: column; gap: 32px; }
-            .footer-links { gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 8px; }
-            .contact-popup { padding: 24px; }
+            header {
+                padding: 12px 20px;
+            }
+            
+            nav {
+                gap: 16px;
+            }
+            
+            nav a:not(.btn-nav) {
+                display: none;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+            
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 36px;
+            }
+            
+            .principles-grid,
+            .steps-grid,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 32px;
+            }
+            
+            .footer-links {
+                gap: 32px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .service-card {
+                padding: 24px;
+            }
+            
+            .pricing-card {
+                padding: 28px;
+            }
+            
+            .contact-popup {
+                padding: 24px;
+            }
+        }
+
+        /* Mobile landscape */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 15px;
+            }
+            
+            .btn-primary {
+                padding: 14px 28px;
+                font-size: 15px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .pricing-price {
+                font-size: 32px;
+            }
+            
+            .step-number {
+                font-size: 32px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+
+        /* Mobile portrait */
+        @media (max-width: 375px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 14px;
+            }
+            
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .service-card h3 {
+                font-size: 18px;
+            }
+            
+            .service-card p {
+                font-size: 14px;
+            }
+            
+            .pricing-card h3 {
+                font-size: 18px;
+            }
+            
+            .pricing-price {
+                font-size: 28px;
+            }
+            
+            .contact-popup h3 {
+                font-size: 20px;
+            }
+            
+            .contact-value {
+                font-size: 15px;
+            }
+        }
+
+        /* Very small devices */
+        @media (max-width: 320px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .btn-primary {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -758,42 +932,44 @@
 
     <!-- SERVICES -->
     <section class="services" id="services">
-        <div class="section-label">Наши услуги</div>
-        <h2 class="section-title">Что мы делаем</h2>
-        <div class="services-list">
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <div>
-                    <h3>Контент-продакшн</h3>
-                    <p>Тексты, дизайн, фото, видео, Reels и Shorts. Создаём контент, который работает на ваши бизнес-задачи: привлекает, удерживает и продаёт.</p>
+        <div class="container">
+            <div class="section-label">Наши услуги</div>
+            <h2 class="section-title">Что мы делаем</h2>
+            <div class="services-list">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <div>
+                        <h3>Контент-продакшн</h3>
+                        <p>Тексты, дизайн, фото, видео, Reels и Shorts. Создаём контент, который работает на ваши бизнес-задачи: привлекает, удерживает и продаёт.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <div>
-                    <h3>Таргетированная реклама</h3>
-                    <p>Настраиваем, тестируем, масштабируем. Снижаем стоимость заявки и выводим рекламу на стабильную окупаемость.</p>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <div>
+                        <h3>Таргетированная реклама</h3>
+                        <p>Настраиваем, тестируем, масштабируем. Снижаем стоимость заявки и выводим рекламу на стабильную окупаемость.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"></div>
-                <div>
-                    <h3>Работа с блогерами</h3>
-                    <p>Подбираем амбассадоров, чья аудитория совпадает с вашей ЦА. Честные интеграции, измеримый результат.</p>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <div>
+                        <h3>Работа с блогерами</h3>
+                        <p>Подбираем амбассадоров, чья аудитория совпадает с вашей ЦА. Честные интеграции, измеримый результат.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💬</div>
-                <div>
-                    <h3>Комьюнити-менеджмент</h3>
-                    <p>Защищаем репутацию бренда, работаем с комментариями, отзывами и возражениями. Ваше лицо в соцсетях всегда под надёжной охраной.</p>
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <div>
+                        <h3>Комьюнити-менеджмент</h3>
+                        <p>Защищаем репутацию бренда, работаем с комментариями, отзывами и возражениями. Ваше лицо в соцсетях всегда под надёжной охраной.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📈</div>
-                <div>
-                    <h3>Аналитика и отчётность</h3>
-                    <p>Прозрачные отчёты с ключевыми метриками: охваты, ER, CPL, ROI, LTV. Вы всегда видите, как работает ваш «двигатель».</p>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <div>
+                        <h3>Аналитика и отчётность</h3>
+                        <p>Прозрачные отчёты с ключевыми метриками: охваты, ER, CPL, ROI, LTV. Вы всегда видите, как работает ваш «двигатель».</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -801,87 +977,93 @@
 
     <!-- PRINCIPLES -->
     <section class="principles" id="about">
-        <div class="section-label">Почему Форпост</div>
-        <h2 class="section-title">Принципы работы</h2>
-        <div class="principles-grid">
-            <div class="principle-card">
-                <div class="principle-icon">🔒</div>
-                <h3>Надёжность как принцип</h3>
-                <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
-            </div>
-            <div class="principle-card">
-                <div class="principle-icon"></div>
-                <h3>Глубокое погружение</h3>
-                <p>Прежде чем запустить рекламу, мы изучаем ваш продукт, клиентов и конкурентов. Только так можно построить стратегию, которая действительно работает.</p>
-            </div>
-            <div class="principle-card">
-                <div class="principle-icon"></div>
-                <h3>Команда, а не фрилансеры</h3>
-                <p>Стратег, копирайтер, дизайнер, видеограф, таргетолог, аналитик — каждый занимается своим делом. Вы получаете слаженную работу профессионалов.</p>
-            </div>
-            <div class="principle-card">
-                <div class="principle-icon">📊</div>
-                <h3>Прозрачность на 100%</h3>
-                <p>Доступ ко всем кабинетам, еженедельные статусы, понятные отчёты. Никаких скрытых статей и «магии» в цифрах.</p>
-            </div>
-            <div class="principle-card">
-                <div class="principle-icon">🚀</div>
-                <h3>Движение вперёд</h3>
-                <p>Мы не останавливаемся на достигнутом. Постоянно тестируем гипотезы, внедряем новые форматы и находим точки роста для вашего бренда.</p>
+        <div class="container">
+            <div class="section-label">Почему Форпост</div>
+            <h2 class="section-title">Принципы работы</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon"></div>
+                    <h3>Надёжность как принцип</h3>
+                    <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">🔍</div>
+                    <h3>Глубокое погружение</h3>
+                    <p>Прежде чем запустить рекламу, мы изучаем ваш продукт, клиентов и конкурентов. Только так можно построить стратегию, которая действительно работает.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">👥</div>
+                    <h3>Команда, а не фрилансеры</h3>
+                    <p>Стратег, копирайтер, дизайнер, видеограф, таргетолог, аналитик — каждый занимается своим делом. Вы получаете слаженную работу профессионалов.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">📊</div>
+                    <h3>Прозрачность на 100%</h3>
+                    <p>Доступ ко всем кабинетам, еженедельные статусы, понятные отчёты. Никаких скрытых статей и «магии» в цифрах.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">🚀</div>
+                    <h3>Движение вперёд</h3>
+                    <p>Мы не останавливаемся на достигнутом. Постоянно тестируем гипотезы, внедряем новые форматы и находим точки роста для вашего бренда.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- STEPS -->
     <section class="steps">
-        <div class="section-label">Как мы работаем</div>
-        <h2 class="section-title">4 шага к росту</h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">01</div>
-                <h3>Диагностика</h3>
-                <p>Изучаем ваш бизнес, аудиторию, конкурентов и текущие показатели.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">02</div>
-                <h3>Стратегия</h3>
-                <p>Строим план развития: позиционирование, контент-линейка, медиаплан, KPI.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">03</div>
-                <h3>Запуск</h3>
-                <p>Создаём контент, настраиваем рекламу, подключаем блогеров и активности.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">04</div>
-                <h3>Масштабирование</h3>
-                <p>Анализируем результаты, усиливаем то, что работает, и выходим на новые объёмы.</p>
+        <div class="container">
+            <div class="section-label">Как мы работаем</div>
+            <h2 class="section-title">4 шага к росту</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Диагностика</h3>
+                    <p>Изучаем ваш бизнес, аудиторию, конкурентов и текущие показатели.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Стратегия</h3>
+                    <p>Строим план развития: позиционирование, контент-линейка, медиаплан, KPI.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Запуск</h3>
+                    <p>Создаём контент, настраиваем рекламу, подключаем блогеров и активности.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h3>Масштабирование</h3>
+                    <p>Анализируем результаты, усиливаем то, что работает, и выходим на новые объёмы.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- TESTIMONIALS -->
     <section class="testimonials" id="testimonials">
-        <div class="section-label">Отзывы клиентов</div>
-        <h2 class="section-title">Что говорят о нас</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <blockquote>«С Форпостом мы наконец-то увидели реальный рост в социальных сетях. Команда очень профессиональная, всегда на связи и понимает наши бизнес-задачи на 100%.»</blockquote>
-                <div class="testimonial-author">
-                    <div class="author-avatar">А</div>
-                    <div>
-                        <div class="author-name">Анна Смирнова</div>
-                        <div class="author-role">Маркетинг-директор, BeautyLine</div>
+        <div class="container">
+            <div class="section-label">Отзывы клиентов</div>
+            <h2 class="section-title">Что говорят о нас</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>«С Форпостом мы наконец-то увидели реальный рост в социальных сетях. Команда очень профессиональная, всегда на связи и понимает наши бизнес-задачи на 100%.»</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">А</div>
+                        <div>
+                            <div class="author-name">Анна Смирнова</div>
+                            <div class="author-role">Маркетинг-директор, BeautyLine</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-card">
-                <blockquote>«Отличная команда! За 3 месяца работы мы увеличили лиды в 2,5 раза, а стоимость заявки снизили на 30%. Отчётность прозрачная и регулярная.»</blockquote>
-                <div class="testimonial-author">
-                    <div class="author-avatar">И</div>
-                    <div>
-                        <div class="author-name">Иван Петров</div>
-                        <div class="author-role">Владелец, AutoPro</div>
+                <div class="testimonial-card">
+                    <blockquote>«Отличная команда! За 3 месяца работы мы увеличили лиды в 2,5 раза, а стоимость заявки снизили на 30%. Отчётность прозрачная и регулярная.»</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">И</div>
+                        <div>
+                            <div class="author-name">Иван Петров</div>
+                            <div class="author-role">Владелец, AutoPro</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -890,43 +1072,45 @@
 
     <!-- PRICING -->
     <section class="pricing" id="pricing">
-        <div class="section-label">Тарифы</div>
-        <h2 class="section-title">Выберите подходящий план</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Старт</h3>
-                <div class="pricing-price">от 50 000 ₽</div>
-                <div class="pricing-period">/месяц</div>
-                <ul class="pricing-features">
-                    <li>SMM-стратегия</li>
-                    <li>4 поста в месяц</li>
-                    <li>Базовая реклама</li>
-                </ul>
-                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
-            </div>
-            <div class="pricing-card featured">
-                <h3>Продвижение</h3>
-                <div class="pricing-price">от 120 000 ₽</div>
-                <div class="pricing-period">/месяц</div>
-                <ul class="pricing-features">
-                    <li>Полная стратегия</li>
-                    <li>12 постов в месяц</li>
-                    <li>Таргетированная реклама</li>
-                    <li>Комьюнити-менеджмент</li>
-                </ul>
-                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing primary">Выбрать</a>
-            </div>
-            <div class="pricing-card">
-                <h3>VIP</h3>
-                <div class="pricing-price">от 250 000 ₽</div>
-                <div class="pricing-period">/месяц</div>
-                <ul class="pricing-features">
-                    <li>Полный цикл продвижения</li>
-                    <li>Безлимитный контент</li>
-                    <li>Работа с блогерами</li>
-                    <li>Персональный менеджер</li>
-                </ul>
-                <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
+        <div class="container">
+            <div class="section-label">Тарифы</div>
+            <h2 class="section-title">Выберите подходящий план</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Старт</h3>
+                    <div class="pricing-price">от 50 000 ₽</div>
+                    <div class="pricing-period">/месяц</div>
+                    <ul class="pricing-features">
+                        <li>SMM-стратегия</li>
+                        <li>4 поста в месяц</li>
+                        <li>Базовая реклама</li>
+                    </ul>
+                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Продвижение</h3>
+                    <div class="pricing-price">от 120 000 ₽</div>
+                    <div class="pricing-period">/месяц</div>
+                    <ul class="pricing-features">
+                        <li>Полная стратегия</li>
+                        <li>12 постов в месяц</li>
+                        <li>Таргетированная реклама</li>
+                        <li>Комьюнити-менеджмент</li>
+                    </ul>
+                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing primary">Выбрать</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>VIP</h3>
+                    <div class="pricing-price">от 250 000 ₽</div>
+                    <div class="pricing-period">/месяц</div>
+                    <ul class="pricing-features">
+                        <li>Полный цикл продвижения</li>
+                        <li>Безлимитный контент</li>
+                        <li>Работа с блогерами</li>
+                        <li>Персональный менеджер</li>
+                    </ul>
+                    <a href="https://timurs-ops.github.io/forpost/" class="btn-pricing default">Выбрать</a>
+                </div>
             </div>
         </div>
     </section>
@@ -971,7 +1155,7 @@
             <p>Мы всегда на связи и готовы ответить на ваши вопросы</p>
             
             <div class="contact-item">
-                <div class="contact-icon">📞</div>
+                <div class="contact-icon"></div>
                 <div>
                     <div class="contact-label">Телефон</div>
                     <a href="tel:+74951234567" class="contact-value">+7 (495) 123-45-67</a>
@@ -979,7 +1163,7 @@
             </div>
             
             <div class="contact-item">
-                <div class="contact-icon">️</div>
+                <div class="contact-icon">✉️</div>
                 <div>
                     <div class="contact-label">Email</div>
                     <a href="mailto:hello@forpost.smm" class="contact-value">hello@forpost.smm</a>
