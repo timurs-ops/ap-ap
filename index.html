@@ -101,19 +101,22 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 120px 24px 80px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .hero-content {
-            max-width: 560px;
-            z-index: 2;
+            max-width: 800px;
             width: 100%;
+            z-index: 2;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: 52px;
+            font-size: 56px;
             font-weight: 800;
             color: #fff;
             line-height: 1.15;
@@ -121,23 +124,26 @@
         }
 
         .hero p {
-            font-size: 17px;
-            color: rgba(255,255,255,0.85);
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
             line-height: 1.7;
-            margin-bottom: 36px;
-            max-width: 480px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
             gap: 16px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn-primary {
             background: #fff;
             color: #1a1a2e;
-            padding: 16px 32px;
+            padding: 16px 36px;
             border-radius: 32px;
             font-size: 16px;
             font-weight: 600;
@@ -154,30 +160,20 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
 
-        .hero-image {
+        .hero::before {
+            content: '';
             position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 420px;
-            height: 420px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #c9a0dc, #f0d0a0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
         }
 
-        .hero-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 120px;
-            opacity: 0.6;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         /* ===== SECTIONS COMMON ===== */
@@ -419,6 +415,27 @@
             padding: 36px;
             border: 2px solid #eef0f4;
             transition: box-shadow 0.3s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(33,150,243,0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .pricing-card:hover::before {
+            opacity: 1;
         }
 
         .pricing-card:hover {
@@ -431,27 +448,39 @@
             box-shadow: 0 4px 20px rgba(33,150,243,0.15);
         }
 
+        .pricing-card.featured::before {
+            background: radial-gradient(circle, rgba(33,150,243,0.25) 0%, transparent 70%);
+        }
+
         .pricing-card h3 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
 
         .pricing-price {
             font-size: 40px;
             font-weight: 800;
             margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
         }
 
         .pricing-period {
             font-size: 14px;
             color: #6b7280;
             margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .pricing-features {
             list-style: none;
             margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
         }
 
         .pricing-features li {
@@ -481,6 +510,8 @@
             cursor: pointer;
             border: none;
             transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-pricing:hover {
@@ -699,10 +730,9 @@
 
         /* ===== RESPONSIVE ===== */
         
-        /* Large desktops */
         @media (min-width: 1440px) {
             .hero h1 {
-                font-size: 64px;
+                font-size: 68px;
             }
             
             .section-title {
@@ -710,22 +740,15 @@
             }
         }
 
-        /* Desktops */
         @media (max-width: 1200px) {
-            .hero-image {
-                width: 360px;
-                height: 360px;
+            .hero h1 {
+                font-size: 52px;
             }
         }
 
-        /* Laptops */
         @media (max-width: 1024px) {
-            .hero-image {
-                display: none;
-            }
-            
-            .hero-content {
-                max-width: 100%;
+            .hero h1 {
+                font-size: 44px;
             }
             
             .principles-grid {
@@ -737,7 +760,6 @@
             }
         }
 
-        /* Tablets */
         @media (max-width: 768px) {
             header {
                 padding: 12px 20px;
@@ -806,7 +828,6 @@
             }
         }
 
-        /* Mobile landscape */
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 32px;
@@ -839,7 +860,6 @@
             }
         }
 
-        /* Mobile portrait */
         @media (max-width: 375px) {
             .hero h1 {
                 font-size: 28px;
@@ -883,7 +903,6 @@
             }
         }
 
-        /* Very small devices */
         @media (max-width: 320px) {
             .hero h1 {
                 font-size: 24px;
@@ -925,9 +944,6 @@
                 <a href="#pricing" class="btn-primary">Тарифы</a>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="hero-image-placeholder">🎨</div>
-        </div>
     </section>
 
     <!-- SERVICES -->
@@ -937,7 +953,7 @@
             <h2 class="section-title">Что мы делаем</h2>
             <div class="services-list">
                 <div class="service-card">
-                    <div class="service-icon">🎨</div>
+                    <div class="service-icon"></div>
                     <div>
                         <h3>Контент-продакшн</h3>
                         <p>Тексты, дизайн, фото, видео, Reels и Shorts. Создаём контент, который работает на ваши бизнес-задачи: привлекает, удерживает и продаёт.</p>
@@ -982,7 +998,7 @@
             <h2 class="section-title">Принципы работы</h2>
             <div class="principles-grid">
                 <div class="principle-card">
-                    <div class="principle-icon"></div>
+                    <div class="principle-icon">🔒</div>
                     <h3>Надёжность как принцип</h3>
                     <p>Мы работаем по договору, соблюдаем дедлайны и несём ответственность за каждый этап. Ваш проект — в крепких руках.</p>
                 </div>
@@ -1078,7 +1094,7 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Старт</h3>
-                    <div class="pricing-price">от 50 000 ₽</div>
+                    <div class="pricing-price">50 000 ₽</div>
                     <div class="pricing-period">/месяц</div>
                     <ul class="pricing-features">
                         <li>SMM-стратегия</li>
@@ -1089,7 +1105,7 @@
                 </div>
                 <div class="pricing-card featured">
                     <h3>Продвижение</h3>
-                    <div class="pricing-price">от 120 000 ₽</div>
+                    <div class="pricing-price">120 000 ₽</div>
                     <div class="pricing-period">/месяц</div>
                     <ul class="pricing-features">
                         <li>Полная стратегия</li>
@@ -1101,7 +1117,7 @@
                 </div>
                 <div class="pricing-card">
                     <h3>VIP</h3>
-                    <div class="pricing-price">от 250 000 ₽</div>
+                    <div class="pricing-price">250 000 ₽</div>
                     <div class="pricing-period">/месяц</div>
                     <ul class="pricing-features">
                         <li>Полный цикл продвижения</li>
@@ -1155,7 +1171,7 @@
             <p>Мы всегда на связи и готовы ответить на ваши вопросы</p>
             
             <div class="contact-item">
-                <div class="contact-icon"></div>
+                <div class="contact-icon">📞</div>
                 <div>
                     <div class="contact-label">Телефон</div>
                     <a href="tel:+74951234567" class="contact-value">+7 (495) 123-45-67</a>
@@ -1173,6 +1189,20 @@
     </div>
 
     <script>
+        // Эффект свечения, следующий за курсором на карточках тарифов
+        const pricingCards = document.querySelectorAll('.pricing-card');
+
+        pricingCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
         function openContactPopup() {
             document.getElementById('contactPopup').classList.add('active');
             document.body.style.overflow = 'hidden';
